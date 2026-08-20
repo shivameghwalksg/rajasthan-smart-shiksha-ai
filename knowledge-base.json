@@ -1,47 +1,162 @@
 {
-  "scholarships": [
+  "metadata": {
+    "project": "Rajasthan Smart Shiksha AI",
+    "project_id": "SIH25104",
+    "year": 2026,
+    "last_verified": "2026-08-20",
+    "purpose": "Official-source education and scholarship knowledge base",
+    "rule": "Current eligibility, amounts, cutoffs and deadlines must be verified against the latest official notification."
+  },
+  "official_sources": [
     {
-      "title": "Scholarship Information",
-      "description": "Students can use this section to find scholarship information.",
-      "eligibility": "Eligibility depends on the official scholarship scheme.",
-      "important": "Always verify eligibility, dates and required documents from the official portal or notification."
+      "name": "Social Justice and Empowerment Department, Government of Rajasthan",
+      "url": "https://sje.rajasthan.gov.in/"
+    },
+    {
+      "name": "Rajasthan Scholarship Portal",
+      "url": "https://scholarship.rajasthan.gov.in/"
+    },
+    {
+      "name": "Rajasthan Higher and Technical Education Department",
+      "url": "https://hte.rajasthan.gov.in/"
     }
   ],
-
-  "admissions": [
+  "scholarship_portal": {
+    "url": "https://scholarship.rajasthan.gov.in/",
+    "services": [
+      "Student scholarship registration/application",
+      "Scholarship application/status services",
+      "Scheme selection",
+      "Institute and university scholarship management"
+    ],
+    "application_fields_shown_on_official_portal": [
+      "Academic year",
+      "Directorate (School/Polytechnic) or University",
+      "Class/Course",
+      "Year/Semester/Trimester",
+      "Date of admission",
+      "Last examination passed",
+      "Last examination roll/enrolment number",
+      "Last examination percentage",
+      "Last examination marksheet"
+    ],
+    "upload_note": "The official scheme-selection page allows JPG/JPEG/PDF attachments and shows a 512 KB maximum per attachment. Exact document requirements vary by scheme.",
+    "helpdesk_email": "helpdesk.scholarship@rajasthan.gov.in"
+  },
+  "sje_scholarships": {
+    "department": "Social Justice and Empowerment Department, Government of Rajasthan",
+    "official_portal": "https://sje.rajasthan.gov.in/scholarship_portal.aspx/Default.aspx",
+    "categories": [
+      {
+        "name": "Post-Matric / Uttar Matric Scholarship",
+        "notes": "The SJE portal publishes scheme instructions, SOPs and application/date notices. Do not infer eligibility or amount without the applicable official notification."
+      }
+    ],
+    "verified_2026_updates": [
+      {
+        "title": "Scholarship Portal opening order for 2026-27",
+        "date": "2026-07-31"
+      },
+      {
+        "title": "Scholarship Scheme Related FAQs",
+        "date": "2026-07-13"
+      },
+      {
+        "title": "Biometric attendance date extension for 2025-26",
+        "date": "2026-07-08",
+        "warning": "This is for 2025-26 and must not be presented as a 2026-27 deadline."
+      }
+    ]
+  },
+  "higher_education_scholarships": {
+    "official_page": "https://hte.rajasthan.gov.in/HTE/30992",
+    "schemes": [
+      {
+        "name": "Chief Minister Higher Education Scholarship (CMHE)",
+        "notes": "Official HTE scholarship page lists CMHE-related circulars. Verify current eligibility, amount and duration from the applicable official rules."
+      },
+      {
+        "name": "Kali Bai Bheel Medhavi Chhatra Scooty Yojana",
+        "notes": "Official HTE page lists 2025-26 provisional/revised/final lists and scheme rules/instructions."
+      },
+      {
+        "name": "Devnarayan Girls Scooty and Incentive Scheme",
+        "notes": "Official HTE page lists 2025-26 provisional/revised/final lists and related instructions."
+      },
+      {
+        "name": "Widow/Divorcee Chief Minister (B.Ed.) Sambal Yojana",
+        "notes": "Listed by the official HTE scholarship page with scheme instructions."
+      },
+      {
+        "name": "Balika Distance Education Scheme",
+        "notes": "Listed by the official HTE scholarship page with rules/guidelines."
+      },
+      {
+        "name": "Swami Vivekanand Scholarship for Academic Excellence",
+        "notes": "The HTE circular list contains a 2026-27 notice. Verify any deadline against the latest notice before giving it to a student."
+      },
+      {
+        "name": "Azim Premji Scholarship",
+        "notes": "The official HTE page has a 2026-27 notice concerning promotion/publicity for regular first-year female students in government/private colleges. The notice points applicants to the Azim Premji Foundation website. Verify eligibility and award details from current official information."
+      }
+    ]
+  },
+  "scooty_schemes": {
+    "official_page": "https://hte.rajasthan.gov.in/HTE/30992",
+    "schemes": [
+      "Kali Bai Bheel Medhavi Chhatra Scooty Yojana",
+      "Devnarayan Girls Scooty and Incentive Scheme"
+    ],
+    "2026_status": "The HTE scholarship page lists 2025-26 provisional/revised/final merit-list information during 2026.",
+    "rule": "Do not state a student's eligibility, cutoff, category, marks requirement or benefit amount unless it is present in the current official scheme rules."
+  },
+  "admissions_and_courses": {
+    "source": "Rajasthan Higher Education / Department of College Education",
+    "guidance": [
+      "Admission schedules are session- and institution-specific.",
+      "Use the latest official HTE or concerned college notice.",
+      "Do not rely on an old admission deadline when answering a current question.",
+      "Course availability varies by college and should be checked on the concerned college's official page."
+    ]
+  },
+  "general_application_steps": [
+    "Open the official Rajasthan Scholarship Portal.",
+    "Use the student/SSO login or registration flow shown by the portal.",
+    "Select the relevant academic year and scheme.",
+    "Enter the requested student, course and examination information.",
+    "Upload documents according to the selected scheme's current instructions.",
+    "Review and submit the application.",
+    "Save application/reference details and monitor status on the official portal."
+  ],
+  "faq": [
     {
-      "title": "Admission Guidance",
-      "description": "Students can ask about admission procedures, courses and required documents.",
-      "important": "Admission dates, fees and eligibility should be verified from the concerned official institution."
+      "question": "Where should I check Rajasthan scholarship information?",
+      "answer": "Check the official Rajasthan Scholarship Portal and SJE Rajasthan. For higher-education scholarships and scooty schemes, also check the official HTE Rajasthan website."
+    },
+    {
+      "question": "Can Rajasthan Smart Shiksha AI guarantee scholarship eligibility?",
+      "answer": "No. It can explain published rules, but final eligibility is determined under the applicable official scheme rules and verification process."
+    },
+    {
+      "question": "Can the AI give an exact scholarship amount or deadline?",
+      "answer": "Only when that amount or deadline is explicitly present in a current verified official notification for the relevant scheme and academic year."
+    },
+    {
+      "question": "What if my Jan Aadhaar details are incorrect?",
+      "answer": "Follow the current official Scholarship Portal/SJE instructions for correction or updating. Do not rely on an old correction deadline."
     }
   ],
-
-  "courses": [
-    {
-      "title": "Course Information",
-      "description": "Students can ask about courses, subjects, duration and general study guidance.",
-      "important": "Specific course details should be verified from the concerned college or university."
-    }
-  ],
-
-  "exams": [
-    {
-      "title": "Exam Preparation",
-      "description": "Students can get study plans, revision strategies, practice questions and general exam guidance."
-    }
-  ],
-
-  "college": [
-    {
-      "title": "College Information",
-      "description": "Students can ask about college-related services, departments, courses and student guidance."
-    }
-  ],
-
-  "notices": [
-    {
-      "title": "Latest Notices",
-      "description": "Official notices can be added here when available."
-    }
-  ]
+  "chatbot_rules": {
+    "must_not_invent": [
+      "Scholarship amounts",
+      "Eligibility percentages",
+      "Income limits",
+      "Application deadlines",
+      "Cutoffs",
+      "Required documents not specified by the relevant official scheme",
+      "Government rules",
+      "Official notices"
+    ],
+    "fallback": "मुझे इस जानकारी की वर्तमान आधिकारिक पुष्टि नहीं मिली है। कृपया संबंधित राजस्थान सरकार/विभाग के नवीनतम आधिकारिक नोटिस या पोर्टल पर सत्यापन करें।"
+  }
 }
