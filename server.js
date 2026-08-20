@@ -12,9 +12,10 @@ const app = express();
 const PORT = process.env.PORT || 3000;
 const MODEL = process.env.GEMINI_MODEL || "gemini-2.5-flash";
 
+// Check API key
 if (!process.env.GEMINI_API_KEY) {
   console.warn(
-    "WARNING: GEMINI_API_KEY is not set. Add it to your Render environment variables."
+    "WARNING: GEMINI_API_KEY is not set. Add it to Render Environment Variables."
   );
 }
 
@@ -22,13 +23,15 @@ const ai = new GoogleGenAI({
   apiKey: process.env.GEMINI_API_KEY
 });
 
+// Middleware
 app.use(express.json({ limit: "100kb" }));
 
-// Serve website files from public folder
-app.use(express.static(path.join(__dirname, "public")));
+// Serve files from ROOT directory
+app.use(express.static(__dirname));
 
+// AI instructions
 const systemInstruction = `
-You are Rajasthan Smart Shiksha AI, an education-focused multilingual assistant for a Smart Education prototype.
+You are Rajasthan Smart Shiksha AI, an education-focused multilingual assistant.
 
 Project: SIH25104
 Organization: Government of Rajasthan
@@ -36,34 +39,45 @@ Project: Smart Education
 Year: 2026
 Developer: Shivkant Bhambi
 
+Your purpose is to help students with:
+
+- Education
+- Scholarships
+- Admissions
+- Courses
+- Exams
+- Study planning
+- College information
+- General student services
+
 Rules:
 
-1. Help students with education, courses, admissions, scholarships, exams,
-   study planning and general student services.
+1. Understand and respond in the user's requested language.
 
-2. Understand and respond in the user's requested language.
-   Hindi, English and Hinglish are especially important.
+2. Hindi, English and Hinglish are especially important.
 
-3. Use simple, student-friendly language.
+3. Use simple and student-friendly language.
 
-4. Never claim that information is an official Rajasthan Government rule
-   unless it is provided from an official source.
+4. Never claim that something is an official Rajasthan Government rule
+   unless it has been verified from an official source.
 
-5. If you do not know a current or official fact, clearly say that it needs
-   verification from the relevant official notice or portal.
+5. If you do not know a current or official fact, clearly say that
+   the information needs verification from the relevant official
+   notice or portal.
 
-6. Do not invent scholarship amounts, eligibility rules, dates, fees,
-   deadlines or government policies.
+6. Do not invent scholarship amounts, eligibility rules, dates,
+   fees, deadlines or government policies.
 
-7. This phase does not have an official document/RAG knowledge base yet.
-   Do not pretend that a source or page number exists.
+7. Do not pretend that an official document, source or page number
+   exists when it has not been provided.
 
 8. Keep answers useful and concise unless the student asks for detail.
 
 9. Be polite, helpful and educational.
 
-10. If the student asks something unrelated to education, answer briefly
-    and guide them back toward useful educational assistance when appropriate.
+10. For scholarship, admission or government-related information,
+    remind students to verify important details from the official
+    portal or latest official notice.
 `;
 
 // Health check
@@ -75,7 +89,7 @@ app.get("/api/health", (req, res) => {
   });
 });
 
-// AI Chat API
+// AI Chat
 app.post("/api/chat", async (req, res) => {
   try {
     const {
@@ -84,13 +98,14 @@ app.post("/api/chat", async (req, res) => {
       history = []
     } = req.body || {};
 
+    // Validate message
     if (typeof message !== "string" || !message.trim()) {
       return res.status(400).json({
         error: "Message is required."
       });
     }
 
-    // Keep only safe conversation history
+    // Safe conversation history
     const safeHistory = Array.isArray(history)
       ? history
           .filter(
@@ -111,7 +126,7 @@ app.post("/api/chat", async (req, res) => {
       ]
     }));
 
-    // Avoid duplicate current message
+    // Add current message if it isn't already there
     const last = contents[contents.length - 1];
 
     if (
@@ -129,14 +144,17 @@ app.post("/api/chat", async (req, res) => {
       });
     }
 
+    // Generate AI response
     const response = await ai.models.generateContent({
       model: MODEL,
 
-      contents,
+      contents: contents,
 
       config: {
         systemInstruction:
-          `${systemInstruction}\n\nPreferred response language: ${language}.`,
+          `${systemInstruction}
+
+Preferred response language: ${language}.`,
 
         temperature: 0.4,
 
@@ -153,7 +171,7 @@ app.post("/api/chat", async (req, res) => {
     }
 
     res.json({
-      reply,
+      reply: reply,
       model: MODEL
     });
 
@@ -177,15 +195,12 @@ app.post("/api/chat", async (req, res) => {
 });
 
 // Frontend fallback
-// Express 5 compatible wildcard route
+// index.html is in the ROOT folder
 app.get("/{*splat}", (req, res) => {
-  res.sendFile(
-    path.join(__dirname, "public", "index.html")
-  );
+  res.sendFile(path.join(__dirname, "index.html"));
 });
 
 // Start server
-// 0.0.0.0 is required for Render
 app.listen(PORT, "0.0.0.0", () => {
   console.log(
     `Rajasthan Smart Shiksha AI running on port ${PORT}`
