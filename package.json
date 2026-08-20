@@ -1,19 +1,9 @@
 {
-  "name": "rajasthan-smart-shiksha-ai",
-  "version": "1.0.0",
-  "private": true,
-  "type": "module",
-  "description": "SIH25104 Smart Education multilingual AI chatbot prototype",
-  "scripts": {
-    "start": "node server.js",
-    "dev": "node --watch server.js"
-  },
-  "engines": {
-    "node": ">=18"
-  },
-  "dependencies": {
-    "@google/genai": "^1.16.0",
-    "dotenv": "^16.6.1",
-    "express": "^5.1.0"
-  }
+  "name":"rajasthan-smart-shiksha-ai",
+  "version":"2.0.0",
+  "private":true,
+  "type":"module",
+  "scripts":{"start":"node server.js"},
+  "engines":{"node":">=20"},
+  "dependencies":{"@google/genai":"^2.17.1","dotenv":"^17.2.1","express":"^5.1.0"}
 }

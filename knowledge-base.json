@@ -1,177 +1,40 @@
 {
-  "name": "Rajasthan Smart Shiksha AI Knowledge Base",
-  "version": "2.0",
-  "last_verified": "2026-08-20",
-  "language": ["Hindi", "English", "Hinglish", "Rajasthani"],
-
-  "instructions": {
-    "purpose": "Help students with Rajasthan education, scholarships, admissions, examinations and official education information.",
-    "accuracy": [
-      "Prefer official Rajasthan Government sources.",
-      "Do not invent scholarship amounts, eligibility, deadlines or selection rules.",
-      "If information can change by academic year, clearly say that the student should verify the latest official notification.",
-      "When an official source is available, provide its name and website.",
-      "For scholarship applications, guide students to the official portal instead of asking for Aadhaar, OTP, passwords or other sensitive credentials."
-    ]
+  "project": {
+    "name": "Rajasthan Smart Shiksha AI",
+    "developer": "Shivkant Bhambi",
+    "year": 2026
   },
-
   "official_portals": [
     {
       "name": "Rajasthan Scholarship Portal",
-      "department": "College Education Department, Government of Rajasthan",
-      "url": "https://scholarship.rajasthan.gov.in/",
-      "purpose": "Rajasthan scholarship schemes, student applications and scholarship services."
+      "url": "https://scholarship.rajasthan.gov.in/"
     },
     {
-      "name": "Social Justice and Empowerment Department",
-      "short_name": "SJE Rajasthan",
-      "url": "https://sje.rajasthan.gov.in/",
-      "purpose": "Social welfare and post-matric scholarship information, notifications and official orders."
+      "name": "SJE Rajasthan",
+      "url": "https://sje.rajasthan.gov.in/"
     },
     {
-      "name": "Higher and Technical Education Department",
-      "short_name": "HTE Rajasthan",
-      "url": "https://hte.rajasthan.gov.in/",
-      "purpose": "Higher education, government colleges, scholarship notices and education-related information."
+      "name": "HTE Rajasthan",
+      "url": "https://hte.rajasthan.gov.in/"
+    },
+    {
+      "name": "Rajasthan SSO",
+      "url": "https://sso.rajasthan.gov.in/"
     },
     {
       "name": "National Scholarship Portal",
-      "short_name": "NSP",
-      "url": "https://scholarships.gov.in/",
-      "purpose": "Central government scholarship schemes."
+      "url": "https://scholarships.gov.in/"
     }
   ],
-
-  "scholarships": [
-    {
-      "name": "CM Higher Education Scholarship Scheme",
-      "department": "College Education Department, Government of Rajasthan",
-      "portal": "https://scholarship.rajasthan.gov.in/",
-      "description": "A Rajasthan higher-education scholarship scheme listed on the official Rajasthan Scholarship Portal.",
-      "important": "Eligibility, income limit, marks, category conditions and benefits can depend on the applicable academic-year rules.",
-      "official_reference": "Rajasthan Scholarship Portal"
-    },
-
-    {
-      "name": "Devnarayan Girls Student Scholarship / Incentive Scheme",
-      "department": "College Education Department, Government of Rajasthan",
-      "portal": "https://scholarship.rajasthan.gov.in/",
-      "description": "Scholarship/incentive scheme for eligible girl students at graduate and postgraduate levels.",
-      "official_reference": "Rajasthan Scholarship Portal"
-    },
-
-    {
-      "name": "Devnarayan Girls Student Scooty Distribution Scheme",
-      "department": "College Education Department, Government of Rajasthan",
-      "portal": "https://scholarship.rajasthan.gov.in/",
-      "description": "Scooty scheme for eligible first-year girl students.",
-      "important": "Selection, eligibility, merit/cut-off and other conditions must be checked from the latest official notification.",
-      "official_reference": "Rajasthan Scholarship Portal"
-    },
-
-    {
-      "name": "Kali Bai Bheel Medhavi Chhatra Scooty Yojana",
-      "department": "Government of Rajasthan",
-      "portal": "https://scholarship.rajasthan.gov.in/",
-      "description": "Merit-based scooty scheme for eligible girl students under the applicable Rajasthan government rules.",
-      "important": "Cut-offs, category conditions, qualifying examination and other rules may change by academic year.",
-      "official_reference": "HTE Rajasthan / Rajasthan Scholarship Portal"
-    },
-
-    {
-      "name": "Post Matric Scholarship",
-      "department": "Social Justice and Empowerment Department, Government of Rajasthan",
-      "portal": "https://sje.rajasthan.gov.in/",
-      "description": "Post-matric scholarship services for eligible students under applicable Rajasthan government rules.",
-      "important": "Eligibility and required documents depend on scheme, category and academic year.",
-      "official_reference": "SJE Rajasthan"
-    },
-
-    {
-      "name": "National Scholarship Portal Scholarships",
-      "department": "Government of India",
-      "portal": "https://scholarships.gov.in/",
-      "description": "Central government scholarship schemes available through the National Scholarship Portal.",
-      "important": "Students should check the individual scheme requirements on the official NSP portal."
-    }
-  ],
-
-  "student_help": {
-    "scholarship_application": [
-      "Check the applicable official scholarship portal.",
-      "Read the latest notification for the academic year.",
-      "Check eligibility before applying.",
-      "Keep required educational and identity documents ready.",
-      "Use the official application process such as SSO/Scholarship Portal where required.",
-      "After submission, check application status on the official portal."
-    ],
-
-    "common_documents": [
-      "Jan Aadhaar details where applicable",
-      "Aadhaar/identity document where required",
-      "Recent marksheet",
-      "Income certificate where applicable",
-      "Domicile/residence certificate where applicable",
-      "Caste/category certificate where applicable",
-      "Bank account/passbook details where required",
-      "College admission/enrolment details",
-      "Fee receipt where required",
-      "Other documents specified by the latest official notification"
-    ],
-
-    "warning": "The exact document list can differ by scholarship. Always verify the latest official scheme notification."
-  },
-
-  "official_information_policy": {
-    "source_priority": [
-      "Government of Rajasthan",
-      "Rajasthan Scholarship Portal",
-      "SJE Rajasthan",
-      "HTE Rajasthan",
-      "Government of India / NSP"
-    ],
-    "avoid": [
-      "Unverified YouTube videos",
-      "Random blogs",
-      "Unofficial Telegram messages",
-      "Social media posts without an official notification"
-    ]
-  },
-
-  "faq": [
-    {
-      "question": "Rajasthan me scholarship ke liye official portal kaunsa hai?",
-      "answer": "Rajasthan Scholarship Portal official scholarship services ke liye https://scholarship.rajasthan.gov.in/ hai. Social Justice and Empowerment Department ki scholarships ke liye SJE Rajasthan ki official website https://sje.rajasthan.gov.in/ bhi check karein."
-    },
-    {
-      "question": "CM Higher Education Scholarship kya hai?",
-      "answer": "CM Higher Education Scholarship Scheme Rajasthan Scholarship Portal par listed Rajasthan higher-education scholarship scheme hai. Eligibility aur benefits academic year ke latest official rules ke according verify karein."
-    },
-    {
-      "question": "Kali Bai Bheel Scooty Yojana kya hai?",
-      "answer": "Kali Bai Bheel Medhavi Chhatra Scooty Yojana Rajasthan government ki eligible girl students ke liye scooty scheme hai. Latest eligibility, merit/cut-off aur application details official HTE/Scho­larship Portal notification se verify karein."
-    },
-    {
-      "question": "Devnarayan Scooty Yojana kya hai?",
-      "answer": "Devnarayan Girls Student Scooty Distribution Scheme Rajasthan Scholarship Portal par listed scheme hai. Eligibility aur selection conditions latest official notification se verify karein."
-    },
-    {
-      "question": "Scholarship ka status kaise check karein?",
-      "answer": "Apne applicable official Rajasthan Scholarship Portal par login karke application/status section check karein."
-    },
-    {
-      "question": "Scholarship ke liye kaunse documents chahiye?",
-      "answer": "Documents scheme ke according alag ho sakte hain. Commonly marksheet, Jan Aadhaar/Aadhaar-related details, income certificate, domicile, category certificate, bank details aur college-related documents maange ja sakte hain. Latest official notification zaroor check karein."
-    }
-  ],
-
-  "response_rules": [
-    "Answer in the user's language.",
-    "For Hinglish questions, respond in simple Hinglish unless the user asks for another language.",
-    "Do not claim a deadline is current unless verified from a recent official notification.",
-    "Do not claim a fixed scholarship amount unless the official scheme rule confirms it.",
-    "If unsure, say: 'Latest official notification verify karna zaroori hai.'",
-    "Never request or store a student's OTP, password, complete Aadhaar number or other sensitive authentication information.",
-    "For application links, prefer official government domains."
+  "course_categories": [
+    "BA/BSc/BCom",
+    "BCA/Computer Applications",
+    "BBA/Management",
+    "Engineering/Polytechnic",
+    "ITI/Vocational",
+    "Teaching",
+    "Agriculture",
+    "Paramedical/Health",
+    "Skill-development"
   ]
 }
