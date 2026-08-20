@@ -11,66 +11,72 @@ const app = express();
 
 const PORT = process.env.PORT || 3000;
 
-// Current Gemini model
-const MODEL = process.env.GEMINI_MODEL || "gemini-3.7-flash";
+// Gemini model
+const MODEL = process.env.GEMINI_MODEL || "gemini-3.6-flash";
 
-
-// ===============================
-// GEMINI API
-// ===============================
+// ========================================
+// GEMINI API SETUP
+// ========================================
 
 if (!process.env.GEMINI_API_KEY) {
-  console.warn(
-    "WARNING: GEMINI_API_KEY is not set in environment variables."
-  );
+  console.warn("WARNING: GEMINI_API_KEY is not configured.");
 }
 
 const ai = new GoogleGenAI({
   apiKey: process.env.GEMINI_API_KEY
 });
 
-
-// ===============================
-// EXPRESS CONFIG
-// ===============================
+// ========================================
+// EXPRESS SETUP
+// ========================================
 
 app.use(express.json({ limit: "100kb" }));
 
-app.use(
-  express.static(path.join(__dirname, "public"))
-);
+// IMPORTANT:
+// Tumhara index.html root folder me hai,
+// public folder ke andar nahi.
+app.use(express.static(__dirname));
 
-
-// ===============================
+// ========================================
 // AI SYSTEM INSTRUCTION
-// ===============================
+// ========================================
 
 const systemInstruction = `
-You are Rajasthan Smart Shiksha AI, an education-focused multilingual AI assistant.
+You are Rajasthan Smart Shiksha AI.
+
+You are an education-focused multilingual AI assistant.
 
 Project:
 Rajasthan Smart Shiksha AI
 SIH25104
-Government of Rajasthan
 Smart Education Project
 2026
 
 Developer:
 Shivkant Bhambi
 
-Your job is to help students with:
+Help students with:
 
 - Education
 - Courses
-- College information
 - Admissions
 - Scholarships
 - Exams
 - Study planning
 - Career guidance
+- College information
 - General student services
 - Learning questions
-- Hindi, English and Hinglish conversations
+
+Language support:
+
+- Hindi
+- English
+- Hinglish
+- Rajasthani
+- Bengali
+- Marathi
+- Other languages when possible
 
 IMPORTANT RULES:
 
@@ -78,53 +84,52 @@ IMPORTANT RULES:
 
 2. Understand the language used by the student.
 
-3. Hindi, English and Hinglish are especially important.
+3. If the student asks in Hindi, reply in Hindi.
 
-4. Use simple language that students can easily understand.
+4. If the student asks in Hinglish, reply in Hinglish.
 
-5. Do NOT invent government rules.
+5. Use simple language.
 
-6. Do NOT invent scholarship amounts.
+6. Never invent government rules.
 
-7. Do NOT invent scholarship eligibility.
+7. Never invent scholarship amounts.
 
-8. Do NOT invent admission dates.
+8. Never invent scholarship eligibility.
 
-9. Do NOT invent exam dates.
+9. Never invent admission dates.
 
-10. Do NOT invent fees or deadlines.
+10. Never invent exam dates.
 
-11. If information may be outdated or official verification is required,
-clearly tell the student that they should verify it from the relevant
-official Rajasthan government, university or college portal.
+11. Never invent fees or deadlines.
 
-12. Never claim that a government rule is official unless reliable official
-information has been provided.
+12. If information is current or official and you are not sure,
+tell the student that it should be verified from the relevant
+official government, university or college portal.
 
-13. This project currently does not have an official RAG/document knowledge
-base, so never pretend that you have access to documents that you do not have.
+13. Do not create fake sources.
 
-14. Do not create fake sources, fake links or fake page numbers.
+14. Do not create fake page numbers.
 
-15. Give concise answers unless the student asks for detailed information.
+15. Do not claim that you have an official Rajasthan government
+knowledge base.
 
-16. Be polite, supportive and encouraging.
+16. This project currently does not have an official RAG/document
+knowledge base.
 
-17. If a student asks a normal educational question, answer it directly.
+17. Keep normal answers concise.
 
-18. If the student asks for study help, provide practical examples.
+18. Give detailed explanations when the student asks for detail.
 
-19. If the student asks in Hinglish, replying in Hinglish is acceptable.
+19. Be polite, supportive and encouraging.
 
-20. Do not expose API keys, server secrets or internal configuration.
+20. Never reveal API keys, environment variables or server secrets.
 
 You are Rajasthan Smart Shiksha AI.
 `;
 
-
-// ===============================
+// ========================================
 // HEALTH CHECK
-// ===============================
+// ========================================
 
 app.get("/api/health", (req, res) => {
   res.json({
@@ -134,25 +139,19 @@ app.get("/api/health", (req, res) => {
   });
 });
 
-
-// ===============================
-// AI CHAT API
-// ===============================
+// ========================================
+// CHAT API
+// ========================================
 
 app.post("/api/chat", async (req, res) => {
   try {
-
     const {
       message,
       language = "Hindi",
       history = []
     } = req.body || {};
 
-
-    // -------------------------------
-    // Validate message
-    // -------------------------------
-
+    // Check message
     if (
       typeof message !== "string" ||
       !message.trim()
@@ -162,21 +161,16 @@ app.post("/api/chat", async (req, res) => {
       });
     }
 
-
-    // -------------------------------
     // Check API key
-    // -------------------------------
-
     if (!process.env.GEMINI_API_KEY) {
       return res.status(500).json({
-        error: "Gemini API key is not configured on the server."
+        error: "Gemini API key is not configured."
       });
     }
 
-
-    // -------------------------------
-    // Safe conversation history
-    // -------------------------------
+    // ========================================
+    // SAFE HISTORY
+    // ========================================
 
     const safeHistory = Array.isArray(history)
       ? history
@@ -184,16 +178,15 @@ app.post("/api/chat", async (req, res) => {
             (item) =>
               item &&
               (item.role === "user" ||
-                item.role === "model") &&
+               item.role === "model") &&
               typeof item.text === "string"
           )
           .slice(-12)
       : [];
 
-
-    // -------------------------------
-    // Convert history to Gemini format
-    // -------------------------------
+    // ========================================
+    // GEMINI CONTENT
+    // ========================================
 
     const contents = safeHistory.map((item) => ({
       role: item.role,
@@ -204,11 +197,7 @@ app.post("/api/chat", async (req, res) => {
       ]
     }));
 
-
-    // -------------------------------
     // Avoid duplicate current message
-    // -------------------------------
-
     const lastMessage =
       contents[contents.length - 1];
 
@@ -227,19 +216,14 @@ app.post("/api/chat", async (req, res) => {
       });
     }
 
-
-    // -------------------------------
-    // Gemini request
-    // -------------------------------
+    // ========================================
+    // CALL GEMINI
+    // ========================================
 
     const response = await ai.models.generateContent({
-
       model: MODEL,
-
       contents: contents,
-
       config: {
-
         systemInstruction:
           `${systemInstruction}
 
@@ -247,126 +231,83 @@ Preferred response language:
 ${language}`,
 
         maxOutputTokens: 800
-
       }
-
     });
 
+    // ========================================
+    // GET RESPONSE
+    // ========================================
 
-    // -------------------------------
-    // Get AI response
-    // -------------------------------
-
-    const reply =
-      response.text?.trim();
-
+    const reply = response.text?.trim();
 
     if (!reply) {
-
       return res.status(502).json({
         error: "AI returned an empty response."
       });
-
     }
 
-
-    // -------------------------------
-    // Send response to frontend
-    // -------------------------------
+    // ========================================
+    // SEND RESPONSE
+    // ========================================
 
     return res.json({
-
       reply: reply,
-
       model: MODEL
-
     });
-
 
   } catch (error) {
 
-    console.error(
-      "Gemini error:",
-      error
-    );
-
+    console.error("Gemini error:", error);
 
     const status =
       Number(error?.status) || 500;
 
-
-    // -------------------------------
     // Rate limit
-    // -------------------------------
-
     if (status === 429) {
-
       return res.status(429).json({
-
         error:
           "AI rate limit reached. Please wait a little and try again."
-
       });
-
     }
 
-
-    // -------------------------------
-    // Authentication error
-    // -------------------------------
-
-    if (
-      status === 401 ||
-      status === 403
-    ) {
-
+    // API key problem
+    if (status === 401 || status === 403) {
       return res.status(status).json({
-
         error:
           "Gemini API key is invalid or does not have access."
-
       });
-
     }
 
-
-    // -------------------------------
-    // Model not found
-    // -------------------------------
-
+    // Model problem
     if (status === 404) {
-
       return res.status(404).json({
-
         error:
           `Gemini model "${MODEL}" is not available for this API key.`
-
       });
-
     }
 
-
-    // -------------------------------
-    // General error
-    // -------------------------------
-
     return res.status(500).json({
-
       error:
         "AI service error. Please check the Render environment variables and Gemini API configuration."
-
     });
-
   }
 });
 
+// ========================================
+// HOMEPAGE
+// ========================================
 
-// ===============================
+app.get("/", (req, res) => {
+  res.sendFile(
+    path.join(__dirname, "index.html")
+  );
+});
+
+// ========================================
 // START SERVER
-// ===============================
+// ========================================
 
 app.listen(PORT, () => {
-
   console.log(
     `Rajasthan Smart Shiksha AI running on port ${PORT}`
   );
@@ -375,4 +316,7 @@ app.listen(PORT, () => {
     `Gemini model: ${MODEL}`
   );
 
+  console.log(
+    `AI configured: ${Boolean(process.env.GEMINI_API_KEY)}`
+  );
 });
