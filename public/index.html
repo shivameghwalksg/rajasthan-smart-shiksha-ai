@@ -1,33 +1,1024 @@
-<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#071b49"><title>Rajasthan Smart Shiksha AI</title>
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#071b49">
+<title>Rajasthan Smart Shiksha AI</title>
+
 <style>
-:root{--n:#071b49;--b:#0969e8;--bg:#eef6ff;--c:#fff;--t:#14213d;--m:#687892;--l:#d8e5f5;--r:18px}*{box-sizing:border-box}body{margin:0;font-family:system-ui,Arial;background:var(--bg);color:var(--t)}button,input{font:inherit}button{cursor:pointer}.top{background:linear-gradient(135deg,#061638,#0b3478);color:#fff;padding:12px 16px;display:flex;justify-content:space-between;align-items:center;position:sticky;top:0;z-index:5}.brand{display:flex;gap:10px;align-items:center}.logo{width:42px;height:42px;border-radius:13px;background:#1595ee;display:grid;place-items:center;font-size:23px}.brand b{display:block}.brand small{opacity:.75}.top button{background:#ffffff18;color:#fff;border:1px solid #ffffff33;border-radius:10px;padding:8px 10px}.hero{max-width:1400px;margin:auto;padding:20px;display:grid;grid-template-columns:1.6fr .8fr;gap:16px}.hero>div{border-radius:24px;padding:25px;box-shadow:0 12px 30px #071b4918}.copy{background:linear-gradient(135deg,#fff,#eaf4ff)}.copy h1{font-size:clamp(32px,6vw,58px);margin:8px 0}.grad{background:linear-gradient(90deg,#f07822,#008d70,#1f5fd6);color:transparent;background-clip:text}.copy p{color:var(--m)}.pills{display:flex;gap:7px;flex-wrap:wrap}.pill{background:#fff;border:1px solid var(--l);padding:8px 11px;border-radius:999px;font-size:12px}.dev{background:linear-gradient(160deg,#0b3d88,#071b49);color:#fff;text-align:center}.dev img{width:90px;height:90px;border-radius:50%;object-fit:cover;border:3px solid #fff}.dev h3{color:#ffd83d}.nav{max-width:1400px;margin:auto;padding:0 20px 12px;display:flex;gap:7px;overflow:auto}.nav button,.tool{white-space:nowrap;border:1px solid var(--l);background:#fff;border-radius:11px;padding:9px 12px}.nav .on{background:#0b3d88;color:#fff}.layout{max-width:1400px;margin:auto;padding:0 20px 22px;display:grid;grid-template-columns:210px 1fr 270px;gap:14px}.card{background:var(--c);border:1px solid var(--l);border-radius:var(--r);box-shadow:0 10px 28px #071b4912}.side{padding:12px;height:max-content;position:sticky;top:75px}.side button{width:100%;text-align:left;border:0;background:transparent;padding:10px;border-radius:10px}.side button:hover{background:#eaf4ff}.chat{min-height:650px;display:flex;flex-direction:column;overflow:hidden}.head{padding:15px;border-bottom:1px solid var(--l)}.head small{display:block;color:var(--m)}.msgs{flex:1;overflow:auto;padding:15px;background:#f6fbff}.msg{max-width:90%;padding:11px 13px;border-radius:15px;margin:9px 0;line-height:1.5;white-space:pre-wrap;overflow-wrap:anywhere}.bot{background:#fff;border:1px solid var(--l)}.user{margin-left:auto;background:#0969e8;color:#fff}.typing{display:none;color:var(--m);padding:8px}.typing.show{display:block}.composer{padding:10px;border-top:1px solid var(--l)}.row{display:flex;gap:7px}.row input{flex:1;border:1px solid #cbd9eb;border-radius:13px;padding:12px}.row button{width:44px;border-radius:12px;border:1px solid var(--l)}.send{background:#0969e8!important;color:#fff;border:0!important}.tools{display:flex;gap:7px;align-items:center;margin-top:7px;flex-wrap:wrap}.file{font-size:11px;color:var(--m)}.right{display:flex;flex-direction:column;gap:12px}.panel{padding:13px}.panel h3{margin:0 0 10px}.grid{display:grid;grid-template-columns:1fr 1fr;gap:7px}.quick{border:0;border-radius:12px;padding:12px 5px;background:#eaf4ff;color:#16446e;font-weight:700;font-size:12px}.langs{display:grid;grid-template-columns:repeat(3,1fr);gap:6px}.langs button{border:1px solid var(--l);background:#fff;border-radius:9px;padding:8px;font-size:11px}.src{display:block;padding:7px;border:1px solid var(--l);border-radius:9px;margin:5px 0;font-size:11px}.features{max-width:1400px;margin:auto;padding:0 20px 22px;display:grid;grid-template-columns:repeat(4,1fr);gap:10px}.feature{padding:16px;text-align:center}.muted{color:var(--m);font-size:12px}.foot{background:#061638;color:#dbe8ff;text-align:center;padding:22px}.modal{display:none;position:fixed;inset:0;background:#0008;place-items:center;z-index:20;padding:15px}.modal.show{display:grid}.box{background:#fff;color:#14213d;max-width:650px;width:100%;max-height:85vh;overflow:auto;border-radius:20px;padding:18px}.close{float:right;border:0;border-radius:9px;padding:7px}@media(max-width:1050px){.layout{grid-template-columns:190px 1fr}.right{grid-column:1/-1;display:grid;grid-template-columns:repeat(3,1fr)}}@media(max-width:700px){.hero{grid-template-columns:1fr;padding:12px}.layout{grid-template-columns:1fr;padding:0 10px}.side{display:none}.right{display:grid;grid-template-columns:1fr 1fr}.features{grid-template-columns:1fr 1fr;padding:0 10px 15px}.nav{padding-left:10px;padding-right:10px}.chat{min-height:640px}.hero{padding-bottom:10px}}
-body.dark{--bg:#050d1e;--c:#0b1730;--t:#eaf2ff;--m:#9eb0cb;--l:#1b3155}.dark .copy,.dark .nav button,.dark .side button,.dark .tool,.dark .langs button,.dark .composer input,.dark .box{background:#0b1730;color:#eaf2ff}.dark .msgs{background:#071328}.dark .bot{background:#0b1730}
-</style></head><body>
-<header class="top"><div class="brand"><div class="logo">🤖</div><div><b>Rajasthan Smart Shiksha AI</b><small>Education • Scholarships • Admissions • Exams</small></div></div><div><button onclick="newChat()">＋ New Chat</button> <button onclick="dark()">🌙</button></div></header>
-<section class="hero"><div class="copy"><div style="color:#0969e8;font-weight:800">RAJASTHAN • STUDENT FIRST</div><h1>Smart <span class="grad">Shiksha AI</span></h1><p>Chat, voice, PDF/image help, scholarships, admissions, courses, exams, notes, quizzes and current official information.</p><div class="pills"><span class="pill">🌐 Multilingual</span><span class="pill">🎙️ Voice</span><span class="pill">📄 PDF</span><span class="pill">🖼️ Image</span><span class="pill">🔎 Web</span><span class="pill">🧠 Quiz</span></div></div><div class="dev"><img id="photo" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='100'%3E%3Crect width='100%25' height='100%25' fill='%230b3d88'/%3E%3Ctext x='50%25' y='55%25' text-anchor='middle' fill='white' font-size='30'%3ESB%3C/text%3E%3C/svg%3E"><h3>Developed by 👑<br>Shivkant Bhambi</h3><p>AI Developer & Web Developer</p><p>Building AI for Better Education</p></div></section>
-<nav class="nav"><button class="on" onclick="focusChat()">🏠 Home</button><button onclick="focusChat()">💬 Chatbot</button><button onclick="quick('scholarship','Rajasthan scholarship की current eligibility, documents, last date और official portal verify करके बताओ।')">🎓 Scholarships</button><button onclick="quick('courses','Students के लिए useful courses और career options बताओ।')">📚 Courses</button><button onclick="quick('web','Rajasthan education की latest official notices search करके बताओ।')">🔔 Notices</button><button onclick="study()">📖 Study Material</button><button onclick="about()">ℹ️ About</button></nav>
-<main class="layout"><aside class="side card"><b>🧠 Rajasthan Smart Shiksha AI</b><button onclick="newChat()">＋ New Chat</button><button onclick="focusChat()">⌂ Dashboard</button><button onclick="quick('scholarship','Rajasthan scholarship की current official information, eligibility, documents और last date verify करके बताओ।')">🎓 Scholarship Info</button><button onclick="quick('admission','Rajasthan college admission की current eligibility और required documents बताओ।')">🏫 Admission Help</button><button onclick="quick('exam','Exam preparation के लिए short practical plan बनाओ।')">📝 Exam Guidance</button><button onclick="quick('web','Rajasthan colleges की current official information search करके बताओ।')">🏛️ College Info</button><button onclick="study()">📚 Study Resources</button><button onclick="historyBox()">❓ My Queries</button><button onclick="voice()">🎙️ Voice Assistant</button></aside>
-<section class="chat card" id="chat"><div class="head">🤖 <b>AI Chat Assistant</b><small>Education, scholarships, admissions, exams and more...</small></div><div class="msgs" id="msgs"><div class="msg bot">👋 नमस्ते! मैं Rajasthan Smart Shiksha AI हूँ।<br>Scholarship, admission, courses, exams, PDF/image और current official information पूछ सकते हैं। 😊</div><div id="typing" class="typing">🤖 AI सोच रहा है...</div></div><div class="composer"><div class="row"><button onclick="file.click()">📎</button><input id="inp" placeholder="Type your message... (कोई भी भाषा में लिखें)" onkeydown="if(event.key==='Enter')send()"><button class="send" onclick="send()">➤</button></div><div class="tools"><button class="tool" onclick="voice()">🎙️ Voice</button><button class="tool" onclick="webToggle()">🔎 Web: <b id="web">Auto</b></button><span class="file" id="fileName">No file • PDF/Image up to 8 MB</span></div><input id="file" type="file" accept="application/pdf,image/*" hidden></div></section>
-<aside class="right"><div class="panel card"><h3>⚡ Quick Actions</h3><div class="grid"><button class="quick" onclick="quick('scholarship','Scholarship की current eligibility, documents, last date और official portal बताओ।')">🎓 Scholarship</button><button class="quick" onclick="quick('admission','Admission की current eligibility और documents बताओ।')">🏫 Admission</button><button class="quick" onclick="quick('courses','12th/college students के लिए useful courses बताओ।')">📚 Courses</button><button class="quick" onclick="quick('exam','7-day exam preparation plan बनाओ।')">📝 Exam Help</button><button class="quick" onclick="quick('web','Rajasthan colleges की current official जानकारी बताओ।')">🏛️ College Info</button><button class="quick" onclick="quick('web','Rajasthan education की latest official notices बताओ।')">🔔 Notices</button></div></div><div class="panel card"><h3>🌐 Languages</h3><div class="langs"><button onclick="lang='Hindi'">🇮🇳 हिंदी</button><button onclick="lang='English'">🇬🇧 English</button><button onclick="lang='Hinglish'">🇮🇳 Hinglish</button><button onclick="lang='Rajasthani'">🏜️ राजस्थानी</button><button onclick="lang='Bengali'">🇧🇩 Bengali</button><button onclick="lang='Marathi'">🇮🇳 Marathi</button></div></div><div class="panel card"><h3>🔗 Sources</h3><div id="sources" class="muted">Current web sources appear here.</div></div></aside></main>
-<section class="features"><div class="feature card"><b>🌐 Multilingual</b><div class="muted">Ask naturally.</div></div><div class="feature card"><b>🧠 Smart AI</b><div class="muted">Student focused.</div></div><div class="feature card"><b>🔎 Source Based</b><div class="muted">Current sources.</div></div><div class="feature card"><b>🛡️ Secure</b><div class="muted">API key stays server-side.</div></div></section><footer class="foot"><b>Rajasthan Smart Shiksha AI</b><br>Developed by Shivkant Bhambi • 2026</footer>
-<div class="modal" id="modal"><div class="box"><button class="close" onclick="closeM()">✕</button><h2 id="mt">About</h2><div id="mb"></div></div></div>
+:root{--n:#071b49;--b:#0969e8;--bg:#eef6ff;--c:#fff;--t:#14213d;--m:#687892;--l:#d8e5f5;--r:18px}
+*{box-sizing:border-box}
+body{margin:0;font-family:system-ui,Arial;background:var(--bg);color:var(--t)}
+button,input{font:inherit}
+button{cursor:pointer}
+
+.top{
+background:linear-gradient(135deg,#061638,#0b3478);
+color:#fff;padding:12px 16px;display:flex;
+justify-content:space-between;align-items:center;
+position:sticky;top:0;z-index:5
+}
+
+.brand{display:flex;gap:10px;align-items:center}
+.logo{
+width:42px;height:42px;border-radius:13px;
+background:#1595ee;display:grid;place-items:center;
+font-size:23px
+}
+.brand b{display:block}
+.brand small{opacity:.75}
+
+.top button{
+background:#ffffff18;color:#fff;
+border:1px solid #ffffff33;border-radius:10px;
+padding:8px 10px
+}
+
+.hero{
+max-width:1400px;margin:auto;padding:20px;
+display:grid;grid-template-columns:1.6fr .8fr;gap:16px
+}
+
+.hero>div{
+border-radius:24px;padding:25px;
+box-shadow:0 12px 30px #071b4918
+}
+
+.copy{background:linear-gradient(135deg,#fff,#eaf4ff)}
+.copy h1{font-size:clamp(32px,6vw,58px);margin:8px 0}
+.grad{
+background:linear-gradient(90deg,#f07822,#008d70,#1f5fd6);
+color:transparent;background-clip:text
+}
+.copy p{color:var(--m)}
+
+.pills{display:flex;gap:7px;flex-wrap:wrap}
+.pill{
+background:#fff;border:1px solid var(--l);
+padding:8px 11px;border-radius:999px;font-size:12px
+}
+
+.dev{
+background:linear-gradient(160deg,#0b3d88,#071b49);
+color:#fff;text-align:center
+}
+
+.dev img{
+width:90px;height:90px;border-radius:50%;
+object-fit:cover;border:3px solid #fff
+}
+
+.dev h3{color:#ffd83d}
+
+.nav{
+max-width:1400px;margin:auto;padding:0 20px 12px;
+display:flex;gap:7px;overflow:auto
+}
+
+.nav button,.tool{
+white-space:nowrap;border:1px solid var(--l);
+background:#fff;border-radius:11px;padding:9px 12px
+}
+
+.nav .on{background:#0b3d88;color:#fff}
+
+.layout{
+max-width:1400px;margin:auto;padding:0 20px 22px;
+display:grid;grid-template-columns:210px 1fr 270px;gap:14px
+}
+
+.card{
+background:var(--c);border:1px solid var(--l);
+border-radius:var(--r);
+box-shadow:0 10px 28px #071b4912
+}
+
+.side{
+padding:12px;height:max-content;
+position:sticky;top:75px
+}
+
+.side button{
+width:100%;text-align:left;border:0;
+background:transparent;padding:10px;border-radius:10px
+}
+
+.side button:hover{background:#eaf4ff}
+
+.chat{
+min-height:650px;display:flex;
+flex-direction:column;overflow:hidden
+}
+
+.head{
+padding:15px;border-bottom:1px solid var(--l)
+}
+
+.head small{
+display:block;color:var(--m)
+}
+
+.msgs{
+flex:1;overflow:auto;padding:15px;
+background:#f6fbff
+}
+
+.msg{
+max-width:90%;padding:11px 13px;
+border-radius:15px;margin:9px 0;
+line-height:1.5;white-space:pre-wrap;
+overflow-wrap:anywhere
+}
+
+.bot{background:#fff;border:1px solid var(--l)}
+.user{margin-left:auto;background:#0969e8;color:#fff}
+
+.typing{
+display:none;color:var(--m);padding:8px
+}
+
+.typing.show{display:block}
+
+.composer{
+padding:10px;border-top:1px solid var(--l)
+}
+
+.row{display:flex;gap:7px}
+
+.row input{
+flex:1;border:1px solid #cbd9eb;
+border-radius:13px;padding:12px
+}
+
+.row button{
+width:44px;border-radius:12px;
+border:1px solid var(--l)
+}
+
+.send{
+background:#0969e8!important;
+color:#fff;border:0!important
+}
+
+.tools{
+display:flex;gap:7px;align-items:center;
+margin-top:7px;flex-wrap:wrap
+}
+
+.file{font-size:11px;color:var(--m)}
+
+.right{
+display:flex;flex-direction:column;gap:12px
+}
+
+.panel{padding:13px}
+.panel h3{margin:0 0 10px}
+
+.grid{
+display:grid;grid-template-columns:1fr 1fr;gap:7px
+}
+
+.quick{
+border:0;border-radius:12px;padding:12px 5px;
+background:#eaf4ff;color:#16446e;
+font-weight:700;font-size:12px
+}
+
+.langs{
+display:grid;grid-template-columns:repeat(3,1fr);gap:6px
+}
+
+.langs button{
+border:1px solid var(--l);background:#fff;
+border-radius:9px;padding:8px;font-size:11px
+}
+
+.src{
+display:block;padding:7px;
+border:1px solid var(--l);
+border-radius:9px;margin:5px 0;font-size:11px
+}
+
+.features{
+max-width:1400px;margin:auto;padding:0 20px 22px;
+display:grid;grid-template-columns:repeat(4,1fr);gap:10px
+}
+
+.feature{padding:16px;text-align:center}
+.muted{color:var(--m);font-size:12px}
+
+.foot{
+background:#061638;color:#dbe8ff;
+text-align:center;padding:22px
+}
+
+.modal{
+display:none;position:fixed;inset:0;
+background:#0008;place-items:center;
+z-index:20;padding:15px
+}
+
+.modal.show{display:grid}
+
+.box{
+background:#fff;color:#14213d;
+max-width:650px;width:100%;
+max-height:85vh;overflow:auto;
+border-radius:20px;padding:18px
+}
+
+.close{
+float:right;border:0;
+border-radius:9px;padding:7px
+}
+
+@media(max-width:1050px){
+.layout{grid-template-columns:190px 1fr}
+.right{
+grid-column:1/-1;
+display:grid;
+grid-template-columns:repeat(3,1fr)
+}
+}
+
+@media(max-width:700px){
+.hero{grid-template-columns:1fr;padding:12px}
+.layout{grid-template-columns:1fr;padding:0 10px}
+.side{display:none}
+.right{
+display:grid;
+grid-template-columns:1fr 1fr
+}
+.features{
+grid-template-columns:1fr 1fr;
+padding:0 10px 15px
+}
+.nav{
+padding-left:10px;
+padding-right:10px
+}
+.chat{min-height:640px}
+.hero{padding-bottom:10px}
+}
+
+body.dark{
+--bg:#050d1e;
+--c:#0b1730;
+--t:#eaf2ff;
+--m:#9eb0cb;
+--l:#1b3155
+}
+
+.dark .copy,
+.dark .nav button,
+.dark .side button,
+.dark .tool,
+.dark .langs button,
+.dark .composer input,
+.dark .box{
+background:#0b1730;
+color:#eaf2ff
+}
+
+.dark .msgs{background:#071328}
+.dark .bot{background:#0b1730}
+</style>
+</head>
+
+<body>
+
+<header class="top">
+<div class="brand">
+<div class="logo">🤖</div>
+<div>
+<b>Rajasthan Smart Shiksha AI</b>
+<small>Education • Scholarships • Admissions • Exams</small>
+</div>
+</div>
+
+<div>
+<button onclick="newChat()">＋ New Chat</button>
+<button onclick="dark()">🌙</button>
+</div>
+</header>
+
+<section class="hero">
+
+<div class="copy">
+<div style="color:#0969e8;font-weight:800">
+RAJASTHAN • STUDENT FIRST
+</div>
+
+<h1>
+Smart <span class="grad">Shiksha AI</span>
+</h1>
+
+<p>
+Chat, voice, PDF/image help, scholarships,
+admissions, courses, exams, notes, quizzes
+and current official information.
+</p>
+
+<div class="pills">
+<span class="pill">🌐 Multilingual</span>
+<span class="pill">🎙️ Voice</span>
+<span class="pill">📄 PDF</span>
+<span class="pill">🖼️ Image</span>
+<span class="pill">🔎 Web</span>
+<span class="pill">🧠 Quiz</span>
+</div>
+</div>
+
+<!-- DEVELOPER CARD -->
+<div class="dev">
+
+<img
+id="photo"
+src="/developer-shivkant.jpg"
+alt="Shivkant Bhambi"
+>
+
+<h3>
+Developed by 👑<br>
+Shivkant Bhambi
+</h3>
+
+<p>AI Developer & Web Developer</p>
+<p>Building AI for Better Education</p>
+
+</div>
+
+</section>
+
+<nav class="nav">
+
+<button class="on" onclick="focusChat()">
+🏠 Home
+</button>
+
+<button onclick="focusChat()">
+💬 Chatbot
+</button>
+
+<button onclick="quick('scholarship','Rajasthan scholarship की current eligibility, documents, last date और official portal verify करके बताओ।')">
+🎓 Scholarships
+</button>
+
+<button onclick="quick('courses','Students के लिए useful courses और career options बताओ।')">
+📚 Courses
+</button>
+
+<button onclick="quick('web','Rajasthan education की latest official notices search करके बताओ।')">
+🔔 Notices
+</button>
+
+<button onclick="study()">
+📖 Study Material
+</button>
+
+<button onclick="about()">
+ℹ️ About
+</button>
+
+</nav>
+
+<main class="layout">
+
+<aside class="side card">
+
+<b>🧠 Rajasthan Smart Shiksha AI</b>
+
+<button onclick="newChat()">
+＋ New Chat
+</button>
+
+<button onclick="focusChat()">
+⌂ Dashboard
+</button>
+
+<button onclick="quick('scholarship','Rajasthan scholarship की current official information, eligibility, documents और last date verify करके बताओ।')">
+🎓 Scholarship Info
+</button>
+
+<button onclick="quick('admission','Rajasthan college admission की current eligibility और required documents बताओ।')">
+🏫 Admission Help
+</button>
+
+<button onclick="quick('exam','Exam preparation के लिए short practical plan बनाओ।')">
+📝 Exam Guidance
+</button>
+
+<button onclick="quick('web','Rajasthan colleges की current official information search करके बताओ।')">
+🏛️ College Info
+</button>
+
+<button onclick="study()">
+📚 Study Resources
+</button>
+
+<button onclick="historyBox()">
+❓ My Queries
+</button>
+
+<button onclick="voice()">
+🎙️ Voice Assistant
+</button>
+
+</aside>
+
+<section class="chat card" id="chat">
+
+<div class="head">
+🤖 <b>AI Chat Assistant</b>
+<small>
+Education, scholarships, admissions, exams and more...
+</small>
+</div>
+
+<div class="msgs" id="msgs">
+
+<div class="msg bot">
+👋 नमस्ते! मैं Rajasthan Smart Shiksha AI हूँ।<br>
+Scholarship, admission, courses, exams,
+PDF/image और current official information
+पूछ सकते हैं। 😊
+</div>
+
+<div id="typing" class="typing">
+🤖 AI सोच रहा है...
+</div>
+
+</div>
+
+<div class="composer">
+
+<div class="row">
+
+<button onclick="file.click()">
+📎
+</button>
+
+<input
+id="inp"
+placeholder="Type your message... (कोई भी भाषा में लिखें)"
+onkeydown="if(event.key==='Enter')send()"
+>
+
+<button class="send" onclick="send()">
+➤
+</button>
+
+</div>
+
+<div class="tools">
+
+<button class="tool" onclick="voice()">
+🎙️ Voice
+</button>
+
+<button class="tool" onclick="webToggle()">
+🔎 Web: <b id="web">Auto</b>
+</button>
+
+<span class="file" id="fileName">
+No file • PDF/Image up to 8 MB
+</span>
+
+</div>
+
+<input
+id="file"
+type="file"
+accept="application/pdf,image/*"
+hidden
+>
+
+</div>
+
+</section>
+
+<aside class="right">
+
+<div class="panel card">
+
+<h3>⚡ Quick Actions</h3>
+
+<div class="grid">
+
+<button class="quick" onclick="quick('scholarship','Scholarship की current eligibility, documents, last date और official portal बताओ।')">
+🎓 Scholarship
+</button>
+
+<button class="quick" onclick="quick('admission','Admission की current eligibility और documents बताओ।')">
+🏫 Admission
+</button>
+
+<button class="quick" onclick="quick('courses','12th/college students के लिए useful courses बताओ।')">
+📚 Courses
+</button>
+
+<button class="quick" onclick="quick('exam','7-day exam preparation plan बनाओ।')">
+📝 Exam Help
+</button>
+
+<button class="quick" onclick="quick('web','Rajasthan colleges की current official जानकारी बताओ।')">
+🏛️ College Info
+</button>
+
+<button class="quick" onclick="quick('web','Rajasthan education की latest official notices बताओ।')">
+🔔 Notices
+</button>
+
+</div>
+</div>
+
+<div class="panel card">
+
+<h3>🌐 Languages</h3>
+
+<div class="langs">
+
+<button onclick="lang='Hindi'">
+🇮🇳 हिंदी
+</button>
+
+<button onclick="lang='English'">
+🇬🇧 English
+</button>
+
+<button onclick="lang='Hinglish'">
+🇮🇳 Hinglish
+</button>
+
+<button onclick="lang='Rajasthani'">
+🏜️ राजस्थानी
+</button>
+
+<button onclick="lang='Bengali'">
+🇧🇩 Bengali
+</button>
+
+<button onclick="lang='Marathi'">
+🇮🇳 Marathi
+</button>
+
+</div>
+</div>
+
+<div class="panel card">
+
+<h3>🔗 Sources</h3>
+
+<div id="sources" class="muted">
+Current web sources appear here.
+</div>
+
+</div>
+
+</aside>
+
+</main>
+
+<section class="features">
+
+<div class="feature card">
+<b>🌐 Multilingual</b>
+<div class="muted">Ask naturally.</div>
+</div>
+
+<div class="feature card">
+<b>🧠 Smart AI</b>
+<div class="muted">Student focused.</div>
+</div>
+
+<div class="feature card">
+<b>🔎 Source Based</b>
+<div class="muted">Current sources.</div>
+</div>
+
+<div class="feature card">
+<b>🛡️ Secure</b>
+<div class="muted">API key stays server-side.</div>
+</div>
+
+</section>
+
+<footer class="foot">
+
+<b>Rajasthan Smart Shiksha AI</b>
+<br>
+
+Developed by Shivkant Bhambi • 2026
+
+</footer>
+
+<div class="modal" id="modal">
+
+<div class="box">
+
+<button class="close" onclick="closeM()">
+✕
+</button>
+
+<h2 id="mt">
+About
+</h2>
+
+<div id="mb"></div>
+
+</div>
+
+</div>
+
 <script>
-const msgs=document.getElementById('msgs'),inp=document.getElementById('inp'),typing=document.getElementById('typing'),file=document.getElementById('file');let hist=JSON.parse(localStorage.rssai||'[]'),lang=localStorage.lang||'Hindi',wm=localStorage.wm||'auto',media=null,busy=false;
-document.getElementById('web').textContent=wm[0].toUpperCase()+wm.slice(1);if(localStorage.dark==='1')document.body.classList.add('dark');
-function esc(s){return s.replace(/[&<>"']/g,x=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[x]))}
-function add(t,c='bot',src=[]){let d=document.createElement('div');d.className='msg '+c;d.innerHTML=c==='bot'?esc(t).replace(/\n/g,'<br>').replace(/(https?:\/\/[^\s<]+)/g,'<a target="_blank" href="$1">$1</a>'):esc(t);msgs.insertBefore(d,typing);if(src.length){document.getElementById('sources').innerHTML=src.map(x=>`<a class="src" target="_blank" href="${x.url}">🔗 ${esc(x.title)}</a>`).join('')}msgs.scrollTop=msgs.scrollHeight}
-function save(){localStorage.rssai=JSON.stringify(hist.slice(-30))}
-function focusChat(){document.getElementById('chat').scrollIntoView({behavior:'smooth'});setTimeout(()=>inp.focus(),250)}
-function newChat(){hist=[];save();msgs.innerHTML='<div class="msg bot">👋 नया chat शुरू हो गया। पूछिए—मैं तैयार हूँ। 😊</div><div id="typing" class="typing">🤖 AI सोच रहा है...</div>'}
-function webToggle(){wm=wm==='auto'?'on':wm==='on'?'off':'auto';localStorage.wm=wm;document.getElementById('web').textContent=wm[0].toUpperCase()+wm.slice(1)}
-function dark(){document.body.classList.toggle('dark');localStorage.dark=document.body.classList.contains('dark')?'1':'0'}
-function quick(mode,text){if(mode==='web')wm='on';inp.value=text;focusChat();send(mode)}
-function send(mode='chat'){if(busy)return;let t=inp.value.trim();if(!t)return;add(t,'user');inp.value='';hist.push({role:'user',text:t});save();ask(t,mode)}
-async function ask(t,mode){busy=true;typing.classList.add('show');let body={message:t,language:lang,history:hist.slice(-10),mode,useWeb:wm==='on'};if(media)body.media=media;try{let r=await fetch('/api/chat',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(body)}),d=await r.json();if(!r.ok)throw Error(d.error||'Request failed');add(d.reply,'bot',d.sources||[]);hist.push({role:'model',text:d.reply});save();if(media){media=null;document.getElementById('fileName').textContent='No file • PDF/Image up to 8 MB';file.value=''}}catch(e){add('⚠️ '+e.message)}finally{typing.classList.remove('show');busy=false}}
-file.onchange=()=>{let f=file.files[0];if(!f)return;if(f.size>8*1024*1024)return alert('File 8 MB से छोटा रखें');if(!(f.type==='application/pdf'||f.type.startsWith('image/')))return alert('PDF/Image only');let r=new FileReader();r.onload=()=>{media={mimeType:f.type,data:r.result.split(',')[1],name:f.name};document.getElementById('fileName').textContent='📎 '+f.name};r.readAsDataURL(f)}
-function voice(){let SR=window.SpeechRecognition||window.webkitSpeechRecognition;if(!SR)return alert('Voice input इस browser में उपलब्ध नहीं है');let r=new SR();r.lang=lang==='English'?'en-IN':'hi-IN';r.onresult=e=>{inp.value=e.results[0][0].transcript;focusChat()};r.start()}
-function modal(t,b){document.getElementById('mt').textContent=t;document.getElementById('mb').innerHTML=b;document.getElementById('modal').classList.add('show')}function closeM(){document.getElementById('modal').classList.remove('show')}
-function study(){modal('📚 Study Material',`<p>AI से notes, quiz और exam plan बनवाएँ.</p><div class="grid"><button class="quick" onclick="closeM();inp.value='इस topic के short exam notes बनाओ: ';focusChat()">📝 Notes</button><button class="quick" onclick="closeM();inp.value='इस topic पर 5 MCQ quiz बनाओ: ';focusChat()">🧠 Quiz</button><button class="quick" onclick="closeM();quick('exam','मेरी exam preparation के लिए short study plan बनाओ।')">🎯 Exam Plan</button><button class="quick" onclick="closeM();inp.value='इस PDF/image के important study points बताओ: ';focusChat()">📄 PDF/Image</button></div>`)}
-function about(){modal('About',`<p><b>Rajasthan Smart Shiksha AI</b></p><p>Student-focused education AI for Rajasthan.</p><p>Developer: <b>Shivkant Bhambi</b></p><p>Chat • Voice • PDF/Image • Web Search • Scholarships • Admissions • Courses • Exams • Notes • Quiz</p>`)}
-function historyBox(){modal('My Queries',hist.length?hist.map(x=>`<p><b>${x.role==='user'?'You':'AI'}:</b> ${esc(x.text)}</p>`).join(''):'No saved queries yet.')}
-</script></body></html>
+
+const msgs=document.getElementById('msgs'),
+inp=document.getElementById('inp'),
+typing=document.getElementById('typing'),
+file=document.getElementById('file');
+
+let hist=JSON.parse(localStorage.rssai||'[]'),
+lang=localStorage.lang||'Hindi',
+wm=localStorage.wm||'auto',
+media=null,
+busy=false;
+
+document.getElementById('web').textContent=
+wm[0].toUpperCase()+wm.slice(1);
+
+if(localStorage.dark==='1')
+document.body.classList.add('dark');
+
+function esc(s){
+return s.replace(/[&<>"']/g,x=>({
+'&':'&amp;',
+'<':'&lt;',
+'>':'&gt;',
+'"':'&quot;',
+"'":'&#39;'
+}[x]))
+}
+
+function add(t,c='bot',src=[]){
+
+let d=document.createElement('div');
+
+d.className='msg '+c;
+
+d.innerHTML=
+c==='bot'
+?esc(t)
+.replace(/\n/g,'<br>')
+.replace(
+/(https?:\/\/[^\s<]+)/g,
+'<a target="_blank" href="$1">$1</a>'
+)
+:esc(t);
+
+msgs.insertBefore(d,typing);
+
+if(src.length){
+
+document.getElementById('sources').innerHTML=
+src.map(x=>
+`<a class="src" target="_blank" href="${x.url}">
+🔗 ${esc(x.title)}
+</a>`
+).join('');
+
+}
+
+msgs.scrollTop=msgs.scrollHeight;
+}
+
+function save(){
+localStorage.rssai=JSON.stringify(hist.slice(-30))
+}
+
+function focusChat(){
+
+document.getElementById('chat')
+.scrollIntoView({behavior:'smooth'});
+
+setTimeout(()=>inp.focus(),250);
+}
+
+function newChat(){
+
+hist=[];
+
+save();
+
+msgs.innerHTML=
+'<div class="msg bot">👋 नया chat शुरू हो गया। पूछिए—मैं तैयार हूँ। 😊</div>'+
+'<div id="typing" class="typing">🤖 AI सोच रहा है...</div>';
+
+}
+
+function webToggle(){
+
+wm=
+wm==='auto'
+?'on'
+:wm==='on'
+?'off'
+:'auto';
+
+localStorage.wm=wm;
+
+document.getElementById('web').textContent=
+wm[0].toUpperCase()+wm.slice(1);
+
+}
+
+function dark(){
+
+document.body.classList.toggle('dark');
+
+localStorage.dark=
+document.body.classList.contains('dark')
+?'1'
+:'0';
+
+}
+
+function quick(mode,text){
+
+if(mode==='web')
+wm='on';
+
+inp.value=text;
+
+focusChat();
+
+send(mode);
+
+}
+
+function send(mode='chat'){
+
+if(busy)return;
+
+let t=inp.value.trim();
+
+if(!t)return;
+
+add(t,'user');
+
+inp.value='';
+
+hist.push({
+role:'user',
+text:t
+});
+
+save();
+
+ask(t,mode);
+
+}
+
+async function ask(t,mode){
+
+busy=true;
+
+typing.classList.add('show');
+
+let body={
+message:t,
+language:lang,
+history:hist.slice(-10),
+mode,
+useWeb:wm==='on'
+};
+
+if(media)
+body.media=media;
+
+try{
+
+let r=await fetch(
+'/api/chat',
+{
+method:'POST',
+headers:{
+'Content-Type':'application/json'
+},
+body:JSON.stringify(body)
+}
+);
+
+let d=await r.json();
+
+if(!r.ok)
+throw Error(d.error||'Request failed');
+
+add(
+d.reply,
+'bot',
+d.sources||[]
+);
+
+hist.push({
+role:'model',
+text:d.reply
+});
+
+save();
+
+if(media){
+
+media=null;
+
+document.getElementById('fileName')
+.textContent=
+'No file • PDF/Image up to 8 MB';
+
+file.value='';
+
+}
+
+}catch(e){
+
+add('⚠️ '+e.message);
+
+}finally{
+
+typing.classList.remove('show');
+
+busy=false;
+
+}
+
+}
+
+file.onchange=()=>{
+
+let f=file.files[0];
+
+if(!f)return;
+
+if(f.size>8*1024*1024)
+return alert('File 8 MB से छोटा रखें');
+
+if(
+!(f.type==='application/pdf'||
+f.type.startsWith('image/'))
+)
+return alert('PDF/Image only');
+
+let r=new FileReader();
+
+r.onload=()=>{
+
+media={
+mimeType:f.type,
+data:r.result.split(',')[1],
+name:f.name
+};
+
+document.getElementById('fileName')
+.textContent='📎 '+f.name;
+
+};
+
+r.readAsDataURL(f);
+
+}
+
+function voice(){
+
+let SR=
+window.SpeechRecognition||
+window.webkitSpeechRecognition;
+
+if(!SR)
+return alert(
+'Voice input इस browser में उपलब्ध नहीं है'
+);
+
+let r=new SR();
+
+r.lang=
+lang==='English'
+?'en-IN'
+:'hi-IN';
+
+r.onresult=e=>{
+
+inp.value=
+e.results[0][0].transcript;
+
+focusChat();
+
+};
+
+r.start();
+
+}
+
+function modal(t,b){
+
+document.getElementById('mt')
+.textContent=t;
+
+document.getElementById('mb')
+.innerHTML=b;
+
+document.getElementById('modal')
+.classList.add('show');
+
+}
+
+function closeM(){
+
+document.getElementById('modal')
+.classList.remove('show');
+
+}
+
+function study(){
+
+modal(
+'📚 Study Material',
+
+`<p>
+AI से notes, quiz और exam plan बनवाएँ.
+</p>
+
+<div class="grid">
+
+<button class="quick"
+onclick="closeM();inp.value='इस topic के short exam notes बनाओ: ';focusChat()">
+📝 Notes
+</button>
+
+<button class="quick"
+onclick="closeM();inp.value='इस topic पर 5 MCQ quiz बनाओ: ';focusChat()">
+🧠 Quiz
+</button>
+
+<button class="quick"
+onclick="closeM();quick('exam','मेरी exam preparation के लिए short study plan बनाओ।')">
+🎯 Exam Plan
+</button>
+
+<button class="quick"
+onclick="closeM();inp.value='इस PDF/image के important study points बताओ: ';focusChat()">
+📄 PDF/Image
+</button>
+
+</div>`
+);
+
+}
+
+function about(){
+
+modal(
+'About',
+
+`<p>
+<b>Rajasthan Smart Shiksha AI</b>
+</p>
+
+<p>
+Student-focused education AI for Rajasthan.
+</p>
+
+<p>
+Developer:
+<b>Shivkant Bhambi</b>
+</p>
+
+<p>
+Chat • Voice • PDF/Image • Web Search •
+Scholarships • Admissions • Courses •
+Exams • Notes • Quiz
+</p>`
+);
+
+}
+
+function historyBox(){
+
+modal(
+'My Queries',
+
+hist.length
+?hist.map(x=>
+`<p>
+<b>${x.role==='user'?'You':'AI'}:</b>
+${esc(x.text)}
+</p>`
+).join('')
+:'No saved queries yet.'
+);
+
+}
+
+</script>
+
+</body>
+  </html>
