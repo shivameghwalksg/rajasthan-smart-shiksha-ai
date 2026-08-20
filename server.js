@@ -1,6 +1,7 @@
 import "dotenv/config";
 import express from "express";
 import path from "node:path";
+import fs from "node:fs";
 import { fileURLToPath } from "node:url";
 import { GoogleGenAI } from "@google/genai";
 
@@ -10,12 +11,10 @@ const __dirname = path.dirname(__filename);
 const app = express();
 
 const PORT = process.env.PORT || 3000;
-
-// Gemini model
 const MODEL = process.env.GEMINI_MODEL || "gemini-3.6-flash";
 
 // ========================================
-// GEMINI API SETUP
+// GEMINI API
 // ========================================
 
 if (!process.env.GEMINI_API_KEY) {
@@ -27,15 +26,49 @@ const ai = new GoogleGenAI({
 });
 
 // ========================================
-// EXPRESS SETUP
+// EXPRESS
 // ========================================
 
 app.use(express.json({ limit: "100kb" }));
 
-// IMPORTANT:
-// Tumhara index.html root folder me hai,
-// public folder ke andar nahi.
+// index.html repository ke root me hai
 app.use(express.static(__dirname));
+
+// ========================================
+// KNOWLEDGE BASE
+// ========================================
+
+const knowledgeBasePath = path.join(
+  __dirname,
+  "knowledge-base.json"
+);
+
+let knowledgeBase = {};
+
+try {
+  const data = fs.readFileSync(
+    knowledgeBasePath,
+    "utf8"
+  );
+
+  knowledgeBase = JSON.parse(data);
+
+  console.log("Knowledge base loaded successfully.");
+} catch (error) {
+  console.warn(
+    "Knowledge base could not be loaded:",
+    error.message
+  );
+}
+
+// Knowledge Base ko AI ke liye text me convert karna
+function getKnowledgeBaseText() {
+  return JSON.stringify(
+    knowledgeBase,
+    null,
+    2
+  ).slice(0, 20000);
+}
 
 // ========================================
 // AI SYSTEM INSTRUCTION
@@ -46,14 +79,28 @@ You are Rajasthan Smart Shiksha AI.
 
 You are an education-focused multilingual AI assistant.
 
+PROJECT INFORMATION:
+
 Project:
 Rajasthan Smart Shiksha AI
+
+Project ID:
 SIH25104
-Smart Education Project
+
+Organization:
+Government of Rajasthan
+
+Category:
+Smart Education
+
+Year:
 2026
 
 Developer:
 Shivkant Bhambi
+
+
+YOUR PURPOSE:
 
 Help students with:
 
@@ -65,66 +112,66 @@ Help students with:
 - Study planning
 - Career guidance
 - College information
-- General student services
+- Student services
 - Learning questions
+- General educational guidance
 
-Language support:
 
-- Hindi
-- English
-- Hinglish
-- Rajasthani
-- Bengali
-- Marathi
-- Other languages when possible
+LANGUAGES:
 
-IMPORTANT RULES:
+Support Hindi, English, Hinglish and other languages whenever possible.
 
-1. Always be helpful and student-friendly.
+If the student writes in Hindi, preferably reply in Hindi.
 
-2. Understand the language used by the student.
+If the student writes in Hinglish, preferably reply in Hinglish.
 
-3. If the student asks in Hindi, reply in Hindi.
+If the student writes in English, reply in English.
 
-4. If the student asks in Hinglish, reply in Hinglish.
 
-5. Use simple language.
+IMPORTANT ACCURACY RULES:
 
-6. Never invent government rules.
+1. Never invent government rules.
 
-7. Never invent scholarship amounts.
+2. Never invent scholarship amounts.
 
-8. Never invent scholarship eligibility.
+3. Never invent eligibility criteria.
 
-9. Never invent admission dates.
+4. Never invent admission dates.
 
-10. Never invent exam dates.
+5. Never invent exam dates.
 
-11. Never invent fees or deadlines.
+6. Never invent fees or deadlines.
 
-12. If information is current or official and you are not sure,
-tell the student that it should be verified from the relevant
-official government, university or college portal.
+7. Never create fake government notices.
 
-13. Do not create fake sources.
+8. Never create fake sources or page numbers.
 
-14. Do not create fake page numbers.
+9. Do not claim that information is officially verified unless it actually
+comes from a reliable official source.
 
-15. Do not claim that you have an official Rajasthan government
-knowledge base.
+10. If the Knowledge Base does not contain enough information, clearly
+tell the student that the information should be verified from the relevant
+official portal, college, university or government notification.
 
-16. This project currently does not have an official RAG/document
-knowledge base.
+11. Do not expose API keys, environment variables or server secrets.
 
-17. Keep normal answers concise.
+12. Keep normal answers concise and student-friendly.
 
-18. Give detailed explanations when the student asks for detail.
+13. Give detailed answers when the student asks for detail.
 
-19. Be polite, supportive and encouraging.
+14. Be polite, supportive and encouraging.
 
-20. Never reveal API keys, environment variables or server secrets.
 
-You are Rajasthan Smart Shiksha AI.
+KNOWLEDGE BASE RULE:
+
+The Knowledge Base below contains information provided for this project.
+
+Use it when it is relevant to the student's question.
+
+Do NOT assume information that is not present in the Knowledge Base.
+
+If the Knowledge Base does not contain the required information,
+say that verification from the relevant official source is required.
 `;
 
 // ========================================
@@ -135,7 +182,11 @@ app.get("/api/health", (req, res) => {
   res.json({
     ok: true,
     model: MODEL,
-    aiConfigured: Boolean(process.env.GEMINI_API_KEY)
+    aiConfigured: Boolean(
+      process.env.GEMINI_API_KEY
+    ),
+    knowledgeBaseLoaded:
+      Object.keys(knowledgeBase).length > 0
   });
 });
 
@@ -145,13 +196,17 @@ app.get("/api/health", (req, res) => {
 
 app.post("/api/chat", async (req, res) => {
   try {
+
     const {
       message,
       language = "Hindi",
       history = []
     } = req.body || {};
 
-    // Check message
+    // ----------------------------------------
+    // Message validation
+    // ----------------------------------------
+
     if (
       typeof message !== "string" ||
       !message.trim()
@@ -161,16 +216,20 @@ app.post("/api/chat", async (req, res) => {
       });
     }
 
-    // Check API key
+    // ----------------------------------------
+    // API key check
+    // ----------------------------------------
+
     if (!process.env.GEMINI_API_KEY) {
       return res.status(500).json({
-        error: "Gemini API key is not configured."
+        error:
+          "Gemini API key is not configured on the server."
       });
     }
 
-    // ========================================
-    // SAFE HISTORY
-    // ========================================
+    // ----------------------------------------
+    // Safe history
+    // ----------------------------------------
 
     const safeHistory = Array.isArray(history)
       ? history
@@ -178,26 +237,31 @@ app.post("/api/chat", async (req, res) => {
             (item) =>
               item &&
               (item.role === "user" ||
-               item.role === "model") &&
+                item.role === "model") &&
               typeof item.text === "string"
           )
           .slice(-12)
       : [];
 
-    // ========================================
-    // GEMINI CONTENT
-    // ========================================
+    // ----------------------------------------
+    // Convert history
+    // ----------------------------------------
 
-    const contents = safeHistory.map((item) => ({
-      role: item.role,
-      parts: [
-        {
-          text: item.text.slice(0, 5000)
-        }
-      ]
-    }));
+    const contents = safeHistory.map(
+      (item) => ({
+        role: item.role,
+        parts: [
+          {
+            text: item.text.slice(0, 5000)
+          }
+        ]
+      })
+    );
 
-    // Avoid duplicate current message
+    // ----------------------------------------
+    // Current message
+    // ----------------------------------------
+
     const lastMessage =
       contents[contents.length - 1];
 
@@ -216,48 +280,77 @@ app.post("/api/chat", async (req, res) => {
       });
     }
 
-    // ========================================
-    // CALL GEMINI
-    // ========================================
+    // ----------------------------------------
+    // Knowledge Base
+    // ----------------------------------------
 
-    const response = await ai.models.generateContent({
-      model: MODEL,
-      contents: contents,
-      config: {
-        systemInstruction:
-          `${systemInstruction}
+    const knowledgeText =
+      getKnowledgeBaseText();
+
+    // ----------------------------------------
+    // Gemini request
+    // ----------------------------------------
+
+    const response =
+      await ai.models.generateContent({
+
+        model: MODEL,
+
+        contents: contents,
+
+        config: {
+
+          systemInstruction:
+            `${systemInstruction}
+
+--------------------------------
+PROJECT KNOWLEDGE BASE
+--------------------------------
+
+${knowledgeText}
+
+--------------------------------
+END KNOWLEDGE BASE
+--------------------------------
 
 Preferred response language:
 ${language}`,
 
-        maxOutputTokens: 800
-      }
-    });
+          maxOutputTokens: 800
+        }
+      });
 
-    // ========================================
-    // GET RESPONSE
-    // ========================================
+    // ----------------------------------------
+    // AI response
+    // ----------------------------------------
 
-    const reply = response.text?.trim();
+    const reply =
+      response.text?.trim();
 
     if (!reply) {
       return res.status(502).json({
-        error: "AI returned an empty response."
+        error:
+          "AI returned an empty response."
       });
     }
 
-    // ========================================
-    // SEND RESPONSE
-    // ========================================
+    // ----------------------------------------
+    // Send response
+    // ----------------------------------------
 
     return res.json({
-      reply: reply,
-      model: MODEL
+      reply,
+      model: MODEL,
+      knowledgeBaseUsed:
+        Object.keys(knowledgeBase).length > 0
     });
 
   } catch (error) {
 
-    console.error("Gemini error:", error);
+    console.error(
+      "Gemini error:",
+      error
+    );
 
     const status =
       Number(error?.status) || 500;
@@ -266,19 +359,22 @@ ${language}`,
     if (status === 429) {
       return res.status(429).json({
         error:
-          "AI rate limit reached. Please wait a little and try again."
+          "AI rate limit reached. Please wait and try again."
       });
     }
 
-    // API key problem
-    if (status === 401 || status === 403) {
+    // API key error
+    if (
+      status === 401 ||
+      status === 403
+    ) {
       return res.status(status).json({
         error:
           "Gemini API key is invalid or does not have access."
       });
     }
 
-    // Model problem
+    // Model error
     if (status === 404) {
       return res.status(404).json({
         error:
@@ -286,9 +382,10 @@ ${language}`,
       });
     }
 
+    // General error
     return res.status(500).json({
       error:
-        "AI service error. Please check the Render environment variables and Gemini API configuration."
+        "AI service error. Please check the Render configuration."
     });
   }
 });
@@ -299,7 +396,10 @@ ${language}`,
 
 app.get("/", (req, res) => {
   res.sendFile(
-    path.join(__dirname, "index.html")
+    path.join(
+      __dirname,
+      "index.html"
+    )
   );
 });
 
@@ -307,16 +407,45 @@ app.get("/", (req, res) => {
 // START SERVER
 // ========================================
 
-app.listen(PORT, () => {
-  console.log(
-    `Rajasthan Smart Shiksha AI running on port ${PORT}`
-  );
+app.listen(
+  PORT,
+  "0.0.0.0",
+  () => {
 
-  console.log(
-    `Gemini model: ${MODEL}`
-  );
+    console.log(
+      "================================"
+    );
 
-  console.log(
-    `AI configured: ${Boolean(process.env.GEMINI_API_KEY)}`
-  );
-});
+    console.log(
+      "Rajasthan Smart Shiksha AI"
+    );
+
+    console.log(
+      "Server started successfully"
+    );
+
+    console.log(
+      `Port: ${PORT}`
+    );
+
+    console.log(
+      `Gemini Model: ${MODEL}`
+    );
+
+    console.log(
+      `AI Configured: ${Boolean(
+        process.env.GEMINI_API_KEY
+      )}`
+    );
+
+    console.log(
+      `Knowledge Base Loaded: ${
+        Object.keys(knowledgeBase).length > 0
+      }`
+    );
+
+    console.log(
+      "================================"
+    );
+  }
+);
