@@ -1,0 +1,47 @@
+{
+  "scholarships": [
+    {
+      "title": "Scholarship Information",
+      "description": "Students can use this section to find scholarship information.",
+      "eligibility": "Eligibility depends on the official scholarship scheme.",
+      "important": "Always verify eligibility, dates and required documents from the official portal or notification."
+    }
+  ],
+
+  "admissions": [
+    {
+      "title": "Admission Guidance",
+      "description": "Students can ask about admission procedures, courses and required documents.",
+      "important": "Admission dates, fees and eligibility should be verified from the concerned official institution."
+    }
+  ],
+
+  "courses": [
+    {
+      "title": "Course Information",
+      "description": "Students can ask about courses, subjects, duration and general study guidance.",
+      "important": "Specific course details should be verified from the concerned college or university."
+    }
+  ],
+
+  "exams": [
+    {
+      "title": "Exam Preparation",
+      "description": "Students can get study plans, revision strategies, practice questions and general exam guidance."
+    }
+  ],
+
+  "college": [
+    {
+      "title": "College Information",
+      "description": "Students can ask about college-related services, departments, courses and student guidance."
+    }
+  ],
+
+  "notices": [
+    {
+      "title": "Latest Notices",
+      "description": "Official notices can be added here when available."
+    }
+  ]
+}
