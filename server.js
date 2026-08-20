@@ -18,7 +18,7 @@ const app = express();
 const PORT = Number(process.env.PORT) || 10000;
 const HOST = "0.0.0.0";
 
-const MODEL = process.env.GEMINI_MODEL || "gemini-2.5-flash";
+const MODEL = process.env.GEMINI_MODEL || "gemini-3.6-flash";
 
 const GEMINI_API_KEY = process.env.GEMINI_API_KEY;
 
@@ -522,13 +522,27 @@ app.use((error, req, res, next) => {
    START SERVER
 ========================= */
 
-const server = app.listen(
-  PORT,
-  HOST,
-  () => {
-    console.log(
-      `🚀 Rajasthan Smart Shiksha AI running on ${HOST}:${PORT}`
-    );
+const server = app.listen(PORT, "0.0.0.0", () => {
+  console.log("========================================");
+  console.log("RAJASTHAN SMART SHIKSHA AI STARTED");
+  console.log("PORT:", PORT);
+  console.log("HOST: 0.0.0.0");
+  console.log("MODEL:", MODEL);
+  console.log("GEMINI API:", GEMINI_API_KEY ? "CONFIGURED" : "MISSING");
+  console.log("========================================");
+});
+
+server.on("error", (err) => {
+  console.error("SERVER ERROR:", err);
+});
+
+process.on("SIGTERM", () => {
+  console.log("SIGTERM received");
+  server.close(() => {
+    console.log("Server closed");
+    process.exit(0);
+  });
+});
 
     console.log(
       `🤖 Gemini model: ${MODEL}`
