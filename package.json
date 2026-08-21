@@ -1,9 +1,21 @@
 {
-  "name":"rajasthan-smart-shiksha-ai",
-  "version":"2.0.0",
-  "private":true,
-  "type":"module",
-  "scripts":{"start":"node server.js"},
-  "engines":{"node":">=20"},
-  "dependencies":{"@google/genai":"^2.17.1","dotenv":"^17.2.1","express":"^5.1.0"}
+  "name": "rajasthan-smart-shiksha-ai",
+  "version": "3.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "engines": {
+    "node": ">=20"
+  },
+  "dependencies": {
+    "bullmq": "^5.58.0",
+    "dotenv": "^17.2.1",
+    "express": "^5.1.0",
+    "express-rate-limit": "^8.0.1",
+    "groq-sdk": "^0.30.0",
+    "helmet": "^8.1.0",
+    "ioredis": "^5.7.0"
+  }
 }
